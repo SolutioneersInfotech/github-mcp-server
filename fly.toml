@@ -7,16 +7,15 @@ app = 'solutioneers-mcp-server'
 primary_region = 'bom'
 
 [build]
+  builtin = "node"
+
+[env]
+  PORT = "3000"
 
 [http_service]
   internal_port = 3000
   force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+  processes = ["app"]
 
-[[vm]]
-  memory = '1gb'
-  cpus = 1
-  memory_mb = 1024
+[processes]
+  app = "node http-mcp-server.js"
